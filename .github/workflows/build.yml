@@ -8,11 +8,12 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Unpack source
+        shell: pwsh
+        run: Expand-Archive -Path client.zip -DestinationPath . -Force
 
       - name: Configure
-        run: cmake -S . -B build -A x64
+        run: cmake -S client -B build -A x64
 
       - name: Build
         run: cmake --build build --config Release
