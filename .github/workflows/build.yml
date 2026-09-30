@@ -8,6 +8,9 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Unpack source
         shell: pwsh
         run: Expand-Archive -Path client.zip -DestinationPath . -Force
